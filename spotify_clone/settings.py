@@ -70,6 +70,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'spotify_clone.wsgi.application'
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://bciflok1w3.execute-api.us-west-2.amazonaws.com'
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
