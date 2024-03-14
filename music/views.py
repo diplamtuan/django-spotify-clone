@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 import requests
 def top_artists():
@@ -123,6 +124,7 @@ def music(request,pk):
     return render(request,'music.html',context)
 
 @login_required(login_url='login') 
+@csrf_protect
 def index(request):
     artists_info = top_artists()
     top_tracks_list = top_tracks()
