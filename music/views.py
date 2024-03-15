@@ -142,15 +142,16 @@ def index(request):
     return render(request, 'index.html',context)
 
 def search(request):
-
     if request.method == 'POST':
         search_query=request.POST['search_query'] 
+        print(search_query)
+
         url = "https://spotify-scraper.p.rapidapi.com/v1/search"
         querystring = {"term":search_query,"type":"track"}
 
         headers = {
-            "X-RapidAPI-Key": "2d1b3841famshf6403fe9fed2175p15b6d0jsn941b5eb234c5",
-            "X-RapidAPI-Host": "spotify-scraper.p.rapidapi.com"
+            "X-RapidAPI-Key": "7741ebd7e4msh0958395311bc59cp14d430jsn282bbabbaa5a",
+	        "X-RapidAPI-Host": "spotify-scraper.p.rapidapi.com"
         }
 
         response = requests.get(url, headers=headers, params=querystring)
@@ -158,6 +159,7 @@ def search(request):
          
         if response.status_code == 200:
             data=response.json()
+            print(data)
             search_results_count =data['tracks']['totalCount']
             tracks = data['tracks']['items']
 
