@@ -123,8 +123,8 @@ def music(request,pk):
         }
     return render(request,'music.html',context)
 
-@login_required(login_url='login') 
-@csrf_protect
+# @login_required(login_url='login') 
+# @csrf_protect
 def index(request):
     artists_info = top_artists()
     top_tracks_list = top_tracks()
@@ -235,7 +235,6 @@ def login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-
         user=auth.authenticate(username=username,password=password)
         if user is not None:
            auth.login(request,user)
